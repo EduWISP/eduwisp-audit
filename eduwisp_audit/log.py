@@ -5,12 +5,18 @@
 from .models import AuditEvent
 
 
-def record(action, *, actor, organization=None, subject=None, reason="", **details):
-    """Registra un evento e lo restituisce. Non salva mai password o contenuti delicati."""
+def record(
+    action, *, actor, organization=None, subject=None, reason="", actor_label=None, **details
+):
+    """Registra un evento e lo restituisce. Non salva mai password o contenuti delicati.
+
+    ``actor`` può essere ``None`` quando agisce un dispositivo: in quel caso ``actor_label``
+    lo descrive (per esempio «dispositivo TAB-0001»).
+    """
     return AuditEvent.objects.create(
         action=action,
         actor=actor,
-        actor_label=actor.get_username() if actor else "",
+        actor_label=actor_label or (actor.get_username() if actor else ""),
         organization=organization,
         organization_label=str(organization) if organization else "",
         subject=subject,

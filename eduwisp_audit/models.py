@@ -15,6 +15,7 @@ class Action(models.TextChoices):
     VIEW_AS_START = "view_as_start", "inizio «vedi come»"
     VIEW_AS_STOP = "view_as_stop", "fine «vedi come»"
     ACCESS_DENIED = "access_denied", "accesso negato"
+    FAMILY_ACCESS_CHOICE = "family_access_choice", "scelta sull'accesso dei familiari"
 
 
 class ReadOnlyQuerySet(models.QuerySet):

@@ -6,9 +6,9 @@
 
 Registro non alterabile delle operazioni amministrative e report minimizzati.
 
-> 🚧 **Stato: progettazione.** Questo repository non contiene ancora codice. La progettazione è nella [documentazione EduWISP](https://eduwisp.org/docs/sicurezza-privacy/sicurezza/).
+> 🧪 **Stato: prototipo v0.** Registro in sola aggiunta (`AuditEvent`) con la funzione `record()`; usato dal «vedi come» dell'amministratore ([ADR-0018](https://eduwisp.org/docs/decisioni/0018-interfaccia-per-ruoli/)). La progettazione è nella [documentazione EduWISP](https://eduwisp.org/docs/sicurezza-privacy/sicurezza/).
 
-🇬🇧 *Tamper-resistant log of administrative operations and minimised reports. **Status: design phase**, no code yet. See the [design docs](https://eduwisp.org/docs/en/security-privacy/security/).*
+🇬🇧 *Tamper-resistant log of administrative operations and minimised reports. **Status: prototype v0**: append-only `AuditEvent` with `record()`. See the [design docs](https://eduwisp.org/docs/en/security-privacy/security/).*
 
 ## Documentazione / Documentation
 
@@ -18,7 +18,25 @@ Registro non alterabile delle operazioni amministrative e report minimizzati.
 
 ## Dipendenze / Dependencies
 
-[`eduwisp-utils`](https://github.com/EduWISP/eduwisp-utils), [`eduwisp-users`](https://github.com/EduWISP/eduwisp-users)
+[`eduwisp-users`](https://github.com/EduWISP/eduwisp-users)
+
+## Uso / Usage
+
+```python
+from eduwisp_audit.log import record
+from eduwisp_audit.models import Action
+
+record(
+    Action.VIEW_AS_START,
+    actor=request.user,
+    organization=scuola,
+    subject=docente,
+    reason="richiesta di assistenza",
+    role="teacher",
+)
+```
+
+Gli eventi non si modificano e non si cancellano dall'applicazione; nell'amministrazione li vedono solo gli amministratori di sistema, in sola lettura.
 
 ## Privacy
 

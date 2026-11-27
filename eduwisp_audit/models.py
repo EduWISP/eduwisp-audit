@@ -18,6 +18,8 @@ class Action(models.TextChoices):
     FAMILY_ACCESS_CHOICE = "family_access_choice", "scelta sull'accesso dei familiari"
     APP_UNLOCK = "app_unlock", "sblocco temporaneo di un'app"
     APP_UNLOCK_END = "app_unlock_end", "fine anticipata di uno sblocco"
+    APP_REQUEST_DECISION = "app_request_decision", "decisione su una richiesta di app"
+    APP_REQUEST_OPINION = "app_request_opinion", "parere della famiglia su una richiesta"
 
 
 class ReadOnlyQuerySet(models.QuerySet):

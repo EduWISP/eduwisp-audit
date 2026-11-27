@@ -7,3 +7,4 @@
 - Prototipo v0: registro delle operazioni in sola aggiunta (`AuditEvent`, `record()`), consultabile solo dagli amministratori di sistema; primo uso il «vedi come» (ADR-0018). / *v0 prototype: append-only audit log, superuser read-only admin; first used by "view as".*
 - Evento `family_access_choice` ed eventi registrati da un dispositivo (`actor_label`), ADR-0018. / *`family_access_choice` event and device-originated events.*
 - Eventi `app_unlock` e `app_unlock_end` per gli sblocchi temporanei delle app (ADR-0019). / *App unlock events.*
+- Eventi `app_request_decision` e `app_request_opinion` per le richieste di app (ADR-0021). / *App request events.*

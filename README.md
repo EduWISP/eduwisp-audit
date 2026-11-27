@@ -26,8 +26,14 @@ Registro non alterabile delle operazioni amministrative e report minimizzati.
 from eduwisp_audit.log import record
 from eduwisp_audit.models import Action
 
-record(Action.VIEW_AS_START, actor=request.user, organization=scuola, subject=docente,
-       reason="richiesta di assistenza", role="teacher")
+record(
+    Action.VIEW_AS_START,
+    actor=request.user,
+    organization=scuola,
+    subject=docente,
+    reason="richiesta di assistenza",
+    role="teacher",
+)
 ```
 
 Gli eventi non si modificano e non si cancellano dall'applicazione; nell'amministrazione li vedono solo gli amministratori di sistema, in sola lettura.

@@ -16,6 +16,8 @@ class Action(models.TextChoices):
     VIEW_AS_STOP = "view_as_stop", "fine «vedi come»"
     ACCESS_DENIED = "access_denied", "accesso negato"
     FAMILY_ACCESS_CHOICE = "family_access_choice", "scelta sull'accesso dei familiari"
+    APP_UNLOCK = "app_unlock", "sblocco temporaneo di un'app"
+    APP_UNLOCK_END = "app_unlock_end", "fine anticipata di uno sblocco"
 
 
 class ReadOnlyQuerySet(models.QuerySet):

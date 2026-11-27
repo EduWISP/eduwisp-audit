@@ -52,3 +52,10 @@ def test_admin_solo_lettura_e_solo_superuser(client, admin_user):
     staff = get_user_model().objects.create_user("staff", password="x", is_staff=True)
     client.force_login(staff)
     assert client.get("/admin/eduwisp_audit/auditevent/").status_code == 403
+
+
+def test_evento_di_un_dispositivo():
+    ev = record(
+        Action.FAMILY_ACCESS_CHOICE, actor=None, actor_label="dispositivo TAB-0001", granted=False
+    )
+    assert ev.actor is None and ev.actor_label == "dispositivo TAB-0001"
